@@ -11,7 +11,7 @@ module Whenever
   end
   
   def self.cron(options)
-    Whenever::JobList.new(options).generate_cron_output
+    JobList.new(options).generate_cron_output
   end
   
   autoload :VERSION,  'whenever/version'

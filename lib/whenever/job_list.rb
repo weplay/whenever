@@ -35,20 +35,20 @@ module Whenever
     
     def command(task, options = {})
       options[:cron_log] ||= @cron_log unless options[:cron_log] === false
-      options[:class]    ||= Whenever::JobTypes::Default
+      options[:class]    ||= JobTypes::Default
       @jobs[@current_time_scope] ||= []
       @jobs[@current_time_scope] << options[:class].new(@options.merge(:task => task).merge(options))
     end
     
     def runner(task, options = {})
       options.reverse_merge!(:environment => @environment, :path => @path)
-      options[:class] = Whenever::JobTypes::Runner
+      options[:class] = JobTypes::Runner
       command(task, options)
     end
     
     def rake(task, options = {})
       options.reverse_merge!(:environment => @environment, :path => @path)
-      options[:class] = Whenever::JobTypes::RakeTask
+      options[:class] = JobTypes::RakeTask
       command(task, options)
     end
   
@@ -76,7 +76,7 @@ module Whenever
       output = []
       @jobs.each do |time, jobs|
         jobs.each do |job|
-          cron = Whenever::Output::Cron.output(time, job)
+          cron = Output::Cron.output(time, job)
           cron << " >> #{job.cron_log} 2>&1" if job.cron_log 
           cron << "\n\n"
           output << cron
