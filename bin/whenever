@@ -1,12 +1,10 @@
 #!/usr/bin/env ruby
 
+require 'whenever'
 require 'rubygems'
 require 'optparse'
 require 'fileutils'
 require 'tempfile'
-require 'whenever'
-
-require File.expand_path(File.dirname(__FILE__) + "/../lib/version")
 
 options = Hash.new
 
