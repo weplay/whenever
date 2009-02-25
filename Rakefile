@@ -2,7 +2,7 @@ require 'echoe'
 require 'whenever'
 
 Echoe.new 'whenever', Whenever::VERSION::STRING do |p|
-  p.description   = "Provides clean ruby syntax for defining messy cron jobs and running them Whenever."
+  p.description   = "Provides clean Ruby syntax for defining cron jobs and running them whenever"
   p.url           = "http://github.com/javan/whenever"
   p.author        = "Javan Makhmali"
   p.email         = "javan@javan.us"

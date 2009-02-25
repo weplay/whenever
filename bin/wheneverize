@@ -1,13 +1,12 @@
 #!/usr/bin/env ruby
 
-# This file is based heavily on Capistrano's `capify` command
+# This file is based heavily on Capistrano's `capify` command.
 
 require 'optparse'
 require 'fileutils'
 
 OptionParser.new do |opts|
   opts.banner = "Usage: #{File.basename($0)} [path]"
-
   begin
     opts.parse!(ARGV)
   rescue OptionParser::ParseError => e
@@ -26,7 +25,6 @@ elsif !File.directory?(ARGV.first)
 elsif ARGV.length > 1
   abort "Too many arguments; please specify only the directory to wheneverize."
 end
-
 
 content = <<-FILE
 # Use this file to easily define all of your cron jobs.

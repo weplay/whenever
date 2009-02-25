@@ -1,6 +1,5 @@
 module Whenever
   class JobList
-  
     def initialize(options)
       @jobs = Hash.new
       @env  = Hash.new
@@ -85,6 +84,5 @@ module Whenever
       
       output.join
     end
-    
   end
 end

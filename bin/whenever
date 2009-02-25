@@ -9,7 +9,7 @@ options = Hash.new
 
 OptionParser.new do |opts|
   opts.banner = "Usage: whenever [options]"
-  opts.on('-v', '--version') { puts "Whenever v#{Whenever::VERSION::STRING}"; exit }
+  opts.on('-v', '--version') { puts "Whenever v#{Whenever::VERSION::STRING}"; exit 0 }
   opts.on('-w', '--write-crontab') { options[:write] = true }
   opts.on('-f', '--load-file [schedule file]', 'default: config/schedule.rb') do |file|
     options[:file] = file if file
@@ -22,8 +22,8 @@ end.parse!
 options[:file] ||= 'config/schedule.rb'
 
 unless File.exists?(options[:file])
-  warn("[fail] can't find file: #{options[:file]}")
-  exit(1)
+  warn "[fail] can't find file: #{options[:file]}"
+  exit 1
 end
 
 if options[:write]
@@ -39,13 +39,12 @@ if options[:write]
   
   if system(command.join(' '))
     puts "[write] crontab file updated"
-    exit
+    exit 0
   else
     warn "[fail] couldn't write crontab"
-    exit(1)
+    exit 1
   end
-  
 else
   puts Whenever.cron(:file => options[:file])
-  exit
+  exit 0
 end

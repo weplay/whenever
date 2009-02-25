@@ -1,7 +1,10 @@
 module Whenever
   module Output
-    
     class Cron
+      def self.output(time, job)
+        out = new(time, job.output, job.at)
+        "#{out.time_in_cron_syntax} #{out.task}"
+      end
       
       attr_accessor :time, :task
       
@@ -9,11 +12,6 @@ module Whenever
         @time = time
         @task = task
         @at   = at.is_a?(String) ? (Chronic.parse(at) || 0) : (at || 0)
-      end
-      
-      def self.output(time, job)
-        out = new(time, job.output, job.at)
-        "#{out.time_in_cron_syntax} #{out.task}"
       end
       
       def time_in_cron_syntax
@@ -97,8 +95,6 @@ module Whenever
         
         output[0, max_occurances].join(',')
       end
-
     end
-    
   end
 end
