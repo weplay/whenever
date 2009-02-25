@@ -26,26 +26,26 @@ module Whenever
       @env[variable.to_s] = value
     end
   
-    def every(frequency, options = {})
+    def every(frequency, options={})
       @current_time_scope = frequency
       @options = options
       yield
     end
     
-    def command(task, options = {})
+    def command(task, options={})
       options[:cron_log] ||= @cron_log unless options[:cron_log] === false
       options[:class]    ||= JobTypes::Default
       @jobs[@current_time_scope] ||= []
       @jobs[@current_time_scope] << options[:class].new(@options.merge(:task => task).merge(options))
     end
     
-    def runner(task, options = {})
+    def runner(task, options={})
       options.reverse_merge!(:environment => @environment, :path => @path)
       options[:class] = JobTypes::Runner
       command(task, options)
     end
     
-    def rake(task, options = {})
+    def rake(task, options={})
       options.reverse_merge!(:environment => @environment, :path => @path)
       options[:class] = JobTypes::RakeTask
       command(task, options)

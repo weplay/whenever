@@ -180,7 +180,7 @@ private
     assert_equal expected, cron.split(' ')[0]
   end
 
-  def parse_time(time = nil, task = nil, at = nil)
+  def parse_time(time=nil, task=nil, at=nil)
     Whenever::Output::Cron.new(time, task, at).time_in_cron_syntax
   end
   

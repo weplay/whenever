@@ -3,7 +3,7 @@ module Whenever
     class Default
       attr_accessor :task, :at, :cron_log
     
-      def initialize(options = {})
+      def initialize(options={})
         @task        = options[:task]
         @at          = options[:at]
         @cron_log    = options[:cron_log]

@@ -8,7 +8,7 @@ module Whenever
       
       attr_accessor :time, :task
       
-      def initialize(time = nil, task = nil, at = nil)
+      def initialize(time=nil, task=nil, at=nil)
         @time = time
         @task = task
         @at   = at.is_a?(String) ? (Chronic.parse(at) || 0) : (at || 0)
@@ -80,7 +80,7 @@ module Whenever
         raise ArgumentError, "Couldn't parse: #{@time}"
       end
       
-      def comma_separated_timing(frequency, max, start = 0)
+      def comma_separated_timing(frequency, max, start=0)
         return start     if frequency.blank? || frequency.zero?
         return '*'       if frequency == 1
         return frequency if frequency > (max * 0.5).ceil
