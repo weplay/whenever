@@ -6,4 +6,4 @@ module Whenever
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
-end unless defined?(Whenever::VERSION)
+end

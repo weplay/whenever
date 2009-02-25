@@ -1,5 +1,5 @@
 module Whenever
-  module Job
+  module JobTypes
     class Default
       
       attr_accessor :task, :at, :cron_log

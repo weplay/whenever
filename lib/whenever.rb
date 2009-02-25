@@ -1,19 +1,21 @@
-unless defined?(Whenever)
-  $:.unshift(File.dirname(__FILE__))
-   
-  # Hoping to load Rails' Rakefile
-  begin
-    load 'Rakefile'
-  rescue LoadError => e
-    nil
-  end
-end
-
-# Dependencies
 require 'activesupport'
 require 'chronic'
 
-# Whenever files
-%w{ base version job_list job_types/default job_types/rake_task job_types/runner outputs/cron }.each do |file|
-  require	File.expand_path(File.dirname(__FILE__) + "/#{file}")
+module Whenever
+  def self.path
+    if defined?(RAILS_ROOT)
+      RAILS_ROOT 
+    elsif defined?(::RAILS_ROOT)
+      ::RAILS_ROOT
+    end
+  end
+  
+  def self.cron(options)
+    Whenever::JobList.new(options).generate_cron_output
+  end
+  
+  autoload :VERSION,  'whenever/version'
+  autoload :JobList,  'whenever/job_list'
+  autoload :JobTypes, 'whenever/job_types'
+  autoload :Output,   'whenever/output'
 end

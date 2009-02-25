@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-require File.expand_path(File.dirname(__FILE__) + "/lib/version")
+require 'whenever'
 
 Echoe.new('whenever', Whenever::VERSION::STRING) do |p|
   p.description    = "Provides clean ruby syntax for defining messy cron jobs and running them Whenever."

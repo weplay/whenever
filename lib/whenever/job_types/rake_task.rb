@@ -1,6 +1,6 @@
 module Whenever
-  module Job
-    class RakeTask < Whenever::Job::Default
+  module JobTypes
+    class RakeTask < Default
       
       def output
         path_required

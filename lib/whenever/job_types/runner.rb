@@ -1,6 +1,6 @@
 module Whenever
-  module Job
-    class Runner < Whenever::Job::Default
+  module JobTypes
+    class Runner < Default
 
       def output
         path_required
