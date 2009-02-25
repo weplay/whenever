@@ -3,11 +3,8 @@ require 'chronic'
 
 module Whenever
   def self.path
-    if defined?(RAILS_ROOT)
-      RAILS_ROOT 
-    elsif defined?(::RAILS_ROOT)
-      ::RAILS_ROOT
-    end
+    return RAILS_ROOT if defined? RAILS_ROOT
+    ::RAILS_ROOT
   end
   
   def self.cron(options)

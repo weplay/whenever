@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class OutputCommandTest < Test::Unit::TestCase
+  def setup
+    Whenever.stubs(:path).returns '<path>'
+  end
   
   context "A plain command" do
     setup do
