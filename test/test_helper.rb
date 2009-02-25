@@ -1,7 +1,3 @@
-require 'rubygems'
-require 'test/unit'
-require 'whenever'
-
 begin
   require 'shoulda'
 rescue LoadError
@@ -18,6 +14,8 @@ rescue LoadError
   exit(1)
 end
 
+require 'test/unit'
+require 'whenever'
 
 module TestExtensions
   

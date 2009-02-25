@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'whenever'
-require 'rubygems'
 require 'optparse'
 require 'fileutils'
 require 'tempfile'
