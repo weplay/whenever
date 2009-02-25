@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class OutputRakeTest < Test::Unit::TestCase
-  
   # Rake are generated in an almost identical way to runners so we
   # only need some basic tests to ensure they are output correctly
   
@@ -70,5 +69,4 @@ class OutputRakeTest < Test::Unit::TestCase
       assert_match two_hours + ' cd /my/path && RAILS_ENV=serious /usr/bin/env rake blahblah', @output
     end
   end
-  
 end

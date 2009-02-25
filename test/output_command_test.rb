@@ -69,5 +69,4 @@ class OutputCommandTest < Test::Unit::TestCase
       assert_match /^.+ .+ .+ .+ blahblah$/, @output
     end
   end
-  
 end

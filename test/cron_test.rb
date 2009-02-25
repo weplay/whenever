@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class CronTest < Test::Unit::TestCase
-  
   context "When parsing time in minutes" do
     should "raise if less than 1 minute" do
       assert_raises ArgumentError do
@@ -183,5 +182,4 @@ private
   def parse_time(time=nil, task=nil, at=nil)
     Whenever::Output::Cron.new(time, task, at).time_in_cron_syntax
   end
-  
 end

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class OutputEnvTest < Test::Unit::TestCase
-
   context "The output from Whenever with environment variables set" do
     setup do
       @output = Whenever.cron \
@@ -19,5 +18,4 @@ class OutputEnvTest < Test::Unit::TestCase
       assert_match "MAILTO=someone@example.com", @output
     end
   end
-
 end

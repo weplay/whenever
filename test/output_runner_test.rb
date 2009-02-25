@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class OutputRunnerTest < Test::Unit::TestCase
-  
   context "A runner with path set" do
     setup do
       @output = Whenever.cron \
@@ -121,5 +120,4 @@ class OutputRunnerTest < Test::Unit::TestCase
       assert_match two_hours + ' /my/path/script/runner -e serious "blahblah"', @output
     end
   end
-  
 end
