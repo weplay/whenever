@@ -5,15 +5,19 @@ module Whenever
       attr_accessor :task, :at, :cron_log
     
       def initialize(options = {})
-        @task        = options[:task]
-        @at          = options[:at]
-        @cron_log    = options[:cron_log]
-        @environment = options[:environment] || :production
-        @path        = options[:path] || Whenever.path
+        @environment = options.delete(:environment) || ENV['RAILS_ENV'] || :production
+        @path        = options.delete(:path) || Whenever.path
+        options.keys.each do |option_name|
+          instance_variable_set("@#{option_name}", options[option_name])
+        end
       end
     
       def output
         task
+      end
+      
+      def lockrun(lockrun_name)
+        "/usr/bin/lockrun --lockfile=/var/run/lockrun/#{lockrun_name}.lockrun -- "
       end
       
     protected

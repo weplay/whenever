@@ -20,6 +20,7 @@ module Whenever
         case @time
           when Symbol then parse_symbol
           when String then parse_as_string
+          when Whenever::Timing::RawCron then @time.to_s
           else parse_time
         end
       end
